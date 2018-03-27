@@ -11,8 +11,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.util.List;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 public class ApplicationTests {
 
 
