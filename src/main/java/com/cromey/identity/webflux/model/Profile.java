@@ -3,8 +3,6 @@ package com.cromey.identity.webflux.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.NotNull;
-
 import java.util.Objects;
 
 @Document
@@ -13,7 +11,7 @@ public class Profile {
     @Id
     private String id;
 
-    //@NotNull(message="email is mandatory")
+    //@NotNull(message="email is required")
     private String email;
 
     public Profile() {}
