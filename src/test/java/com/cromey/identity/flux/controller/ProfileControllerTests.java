@@ -4,6 +4,7 @@ import com.cromey.identity.webflux.controller.ProfileController;
 import com.cromey.identity.webflux.model.Profile;
 import com.cromey.identity.webflux.repository.ProfileRepository;
 
+import com.cromey.identity.webflux.validator.ProfileValidator;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,10 +26,13 @@ public class ProfileControllerTests {
     @Autowired
     private ProfileRepository repository;
 
+    @Autowired
+    private ProfileValidator validator;
+
     @BeforeEach
     void beforeEach() {
         this.client = WebTestClient
-                .bindToController(new ProfileController(repository))
+                .bindToController(new ProfileController(repository, validator))
                 .configureClient()
                 .baseUrl("/profiles")
                 .build();
@@ -41,8 +45,7 @@ public class ProfileControllerTests {
 
     @Test
     public void getAllProfile() {
-       // System.out.println(client);
-        this.client.get()
+       this.client.get()
                 .uri("/")
                 .exchange()
                 .expectStatus()
