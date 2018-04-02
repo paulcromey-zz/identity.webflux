@@ -19,7 +19,7 @@ public class Application {
 	CommandLineRunner init(ProfileRepository repository){
 		return args -> {
 			Flux<Profile> profileFlux = Flux.just(
-					new Profile(null, "success@simulator.amazonses.com")
+					new Profile(null, "success@simulator.amazonses.com"))
 					.flatMap(repository::save);
 
 			profileFlux.thenMany(repository.findAll())
