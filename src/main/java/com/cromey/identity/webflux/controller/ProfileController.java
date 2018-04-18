@@ -37,7 +37,7 @@ public class ProfileController {
     }
 
     @GetMapping("{id}")
-    public Mono<ResponseEntity<Profile>> getProfile(@PathVariable String id){
+    public Mono<ResponseEntity<Profile>> getProfile(@PathVariable String id) {
         return repository.findById(id)
                 .map(profile -> ResponseEntity.ok(profile))
                 .defaultIfEmpty(ResponseEntity.notFound().build());
@@ -45,7 +45,7 @@ public class ProfileController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Profile> createProfile(@Valid @RequestBody Profile profile){
+    public Mono<Profile> createProfile(@Valid @RequestBody Profile profile) {
         return repository.save(profile);
     }
 
@@ -65,14 +65,14 @@ public class ProfileController {
     public Mono<ResponseEntity<Void>> deleteProfile(@PathVariable(value = "id") String id) {
         return repository.findById(id)
                 .flatMap(existingProfile ->
-                    repository.delete(existingProfile)
-                            .then(Mono.just(ResponseEntity.ok().<Void>build()))
+                        repository.delete(existingProfile)
+                                .then(Mono.just(ResponseEntity.ok().<Void>build()))
                 )
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping
-    public  Mono<Void> deleteAllProfiles() {
+    public Mono<Void> deleteAllProfiles() {
         return repository.deleteAll();
     }
 
