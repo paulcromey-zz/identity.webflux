@@ -1,5 +1,6 @@
 package com.cromey.identity.webflux.validator;
 
+import com.cromey.identity.webflux.error.ErrorCodes;
 import com.cromey.identity.webflux.model.Profile;
 import com.cromey.identity.webflux.repository.ProfileRepository;
 
@@ -29,10 +30,10 @@ public class ProfileValidator implements Validator {
 
         Profile profile = (Profile) target;
 
-        if(profile.getEmail() == null || profile.getEmail().isEmpty()){
+        /*if(profile.getEmail() == null || profile.getEmail().isEmpty()){
             errors.reject("email","required");
-        }
+        }*/
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "email", "required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", ErrorCodes.MISSING_PROFILE_EMAIL.name(), "required");
     }
 }
