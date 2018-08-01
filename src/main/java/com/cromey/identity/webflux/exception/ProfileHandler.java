@@ -1,6 +1,7 @@
-package com.cromey.identity.webflux.error;
+package com.cromey.identity.webflux.exception;
 
 import com.cromey.identity.webflux.controller.ProfileController;
+import com.cromey.identity.webflux.error.ErrorResponse;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ResourceBundleMessageSource;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.support.WebExchangeBindException;
 import java.util.Locale;
 
 @ControllerAdvice(assignableTypes = {ProfileController.class})
-public class ProfileControllerExceptionHandler {
+public class ProfileHandler {
 
     @Bean
     public MessageSource messageSource() {
