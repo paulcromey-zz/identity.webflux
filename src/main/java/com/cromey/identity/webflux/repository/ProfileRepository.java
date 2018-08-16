@@ -8,6 +8,4 @@ import reactor.core.publisher.Flux;
 @ComponentScan
 public interface ProfileRepository extends ReactiveMongoRepository<Profile, String> {
 
-    Flux<Profile> findByEmail(String email);
-
 }

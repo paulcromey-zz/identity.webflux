@@ -2,20 +2,33 @@ package com.cromey.identity.webflux.controller;
 
 import com.cromey.identity.webflux.model.Profile;
 import com.cromey.identity.webflux.repository.ProfileRepository;
+import com.cromey.identity.webflux.validator.ProfileValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/profiles")
 public class ProfileController {
 
     private ProfileRepository repository;
+    private ProfileValidator validator;
 
-    public ProfileController(ProfileRepository repository) {
+    @Autowired
+    public ProfileController(ProfileRepository repository, ProfileValidator validator) {
         this.repository = repository;
+        this.validator = validator;
+    }
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        binder.setValidator(validator);
     }
 
     @GetMapping
@@ -24,7 +37,7 @@ public class ProfileController {
     }
 
     @GetMapping("{id}")
-    public Mono<ResponseEntity<Profile>> getProfile(@PathVariable String id){
+    public Mono<ResponseEntity<Profile>> getProfile(@PathVariable String id) {
         return repository.findById(id)
                 .map(profile -> ResponseEntity.ok(profile))
                 .defaultIfEmpty(ResponseEntity.notFound().build());
@@ -32,7 +45,7 @@ public class ProfileController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Profile> saveProfile(@RequestBody Profile profile){
+    public Mono<Profile> createProfile(@Valid @RequestBody Profile profile) {
         return repository.save(profile);
     }
 
@@ -52,14 +65,14 @@ public class ProfileController {
     public Mono<ResponseEntity<Void>> deleteProfile(@PathVariable(value = "id") String id) {
         return repository.findById(id)
                 .flatMap(existingProfile ->
-                    repository.delete(existingProfile)
-                            .then(Mono.just(ResponseEntity.ok().<Void>build()))
+                        repository.delete(existingProfile)
+                                .then(Mono.just(ResponseEntity.ok().<Void>build()))
                 )
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping
-    public  Mono<Void> deleteAllProfiles() {
+    public Mono<Void> deleteAllProfiles() {
         return repository.deleteAll();
     }
 

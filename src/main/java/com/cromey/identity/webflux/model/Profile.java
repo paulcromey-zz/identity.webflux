@@ -11,6 +11,7 @@ public class Profile {
     @Id
     private String id;
 
+    //@NotNull(message="email is required")
     private String email;
 
     public Profile() {}
