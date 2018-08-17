@@ -1,22 +1,23 @@
 package com.cromey.identity.flux.controller;
 
+import com.cromey.identity.webflux.Application;
 import com.cromey.identity.webflux.controller.ProfileController;
 import com.cromey.identity.webflux.model.Profile;
 import com.cromey.identity.webflux.repository.ProfileRepository;
 
 import com.cromey.identity.webflux.validator.ProfileValidator;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.util.List;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes=Application.class)
 public class ProfileControllerTests {
 
     private WebTestClient client;
@@ -25,33 +26,30 @@ public class ProfileControllerTests {
 
     @Autowired
     private ProfileRepository repository;
-
+    
     @Autowired
     private ProfileValidator validator;
 
-    @BeforeEach
-    void beforeEach() {
-        this.client = WebTestClient
+    @Test
+    public void getAllProfile() {
+    	
+    	this.client = WebTestClient
                 .bindToController(new ProfileController(repository, validator))
                 .configureClient()
                 .baseUrl("/profiles")
                 .build();
 
-        System.out.println(client);
-
         this.expectedList =
                 repository.findAll().collectList().block();
-    }
-
-    @Test
-    public void getAllProfile() {
-       this.client.get()
+    	
+        this.client.get()
                 .uri("/")
                 .exchange()
                 .expectStatus()
                 .isOk()
                 .expectBodyList(Profile.class)
                 .isEqualTo(expectedList);
+        
     }
 
 }
