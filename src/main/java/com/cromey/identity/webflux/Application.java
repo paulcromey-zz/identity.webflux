@@ -22,8 +22,7 @@ public class Application {
 					new Profile(null, "success@simulator.amazonses.com"))
 					.flatMap(repository::save);
 
-			profileFlux.thenMany(repository.findAll())
-			.subscribe(System.out::println);
+			profileFlux.thenMany(repository.findAll()).subscribe();
 		};
 	}
 }
