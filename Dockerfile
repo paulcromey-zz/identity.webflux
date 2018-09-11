@@ -1,5 +1,5 @@
 FROM technekes/centos-java:oracle-8-jre
-ENV LC_ALL=C
-ARG JAR_FILE
-ADD ${JAR_FILE} app.jar
+VOLUME /tmp
+COPY target/identity-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8080
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
