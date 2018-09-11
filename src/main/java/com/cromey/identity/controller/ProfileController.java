@@ -1,8 +1,8 @@
-package com.cromey.identity.webflux.controller;
+package com.cromey.identity.controller;
 
-import com.cromey.identity.webflux.model.Profile;
-import com.cromey.identity.webflux.repository.ProfileRepository;
-import com.cromey.identity.webflux.validator.ProfileValidator;
+import com.cromey.identity.repository.ProfileRepository;
+import com.cromey.identity.validator.ProfileValidator;
+import com.cromey.identity.model.Profile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

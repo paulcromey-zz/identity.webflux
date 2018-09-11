@@ -1,7 +1,7 @@
-package com.cromey.identity.webflux;
+package com.cromey.identity;
 
-import com.cromey.identity.webflux.model.Profile;
-import com.cromey.identity.webflux.repository.ProfileRepository;
+import com.cromey.identity.repository.ProfileRepository;
+import com.cromey.identity.model.Profile;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

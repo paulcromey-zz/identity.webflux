@@ -1,4 +1,4 @@
-package com.cromey.identity.webflux.model;
+package com.cromey.identity.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

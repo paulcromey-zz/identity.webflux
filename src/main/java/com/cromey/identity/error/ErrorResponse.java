@@ -1,4 +1,4 @@
-package com.cromey.identity.webflux.error;
+package com.cromey.identity.error;
 
 public class ErrorResponse {
 

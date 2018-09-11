@@ -1,4 +1,4 @@
-package com.cromey.identity.webflux.error;
+package com.cromey.identity.error;
 
 public enum ErrorCodes {
     MISSING_PROFILE_EMAIL

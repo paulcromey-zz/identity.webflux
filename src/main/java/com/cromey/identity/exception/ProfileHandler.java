@@ -1,7 +1,7 @@
-package com.cromey.identity.webflux.exception;
+package com.cromey.identity.exception;
 
-import com.cromey.identity.webflux.controller.ProfileController;
-import com.cromey.identity.webflux.error.ErrorResponse;
+import com.cromey.identity.controller.ProfileController;
+import com.cromey.identity.error.ErrorResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;

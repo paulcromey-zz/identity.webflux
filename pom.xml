@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.cromey</groupId>
-	<artifactId>identity.webflux</artifactId>
+	<artifactId>identity</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>identity.flux</name>
-	<description>Demo project for Spring Boot</description>
+	<name>identity</name>
+	<description>Identity RESTful Service</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

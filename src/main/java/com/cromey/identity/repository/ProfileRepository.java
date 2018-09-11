@@ -1,9 +1,8 @@
-package com.cromey.identity.webflux.repository;
+package com.cromey.identity.repository;
 
-import com.cromey.identity.webflux.model.Profile;
+import com.cromey.identity.model.Profile;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
-import reactor.core.publisher.Flux;
 
 @ComponentScan
 public interface ProfileRepository extends ReactiveMongoRepository<Profile, String> {

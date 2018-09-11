@@ -1,9 +1,8 @@
-package com.cromey.identity.webflux.validator;
+package com.cromey.identity.validator;
 
-import com.cromey.identity.webflux.controller.ProfileController;
-import com.cromey.identity.webflux.error.ErrorCodes;
-import com.cromey.identity.webflux.model.Profile;
-import com.cromey.identity.webflux.repository.ProfileRepository;
+import com.cromey.identity.repository.ProfileRepository;
+import com.cromey.identity.error.ErrorCodes;
+import com.cromey.identity.model.Profile;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

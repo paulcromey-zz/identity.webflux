@@ -1,11 +1,11 @@
 package com.cromey.identity.flux.controller;
 
-import com.cromey.identity.webflux.Application;
-import com.cromey.identity.webflux.controller.ProfileController;
-import com.cromey.identity.webflux.model.Profile;
-import com.cromey.identity.webflux.repository.ProfileRepository;
+import com.cromey.identity.Application;
+import com.cromey.identity.controller.ProfileController;
+import com.cromey.identity.model.Profile;
+import com.cromey.identity.repository.ProfileRepository;
 
-import com.cromey.identity.webflux.validator.ProfileValidator;
+import com.cromey.identity.validator.ProfileValidator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
